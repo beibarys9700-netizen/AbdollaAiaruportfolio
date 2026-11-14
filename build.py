@@ -76,7 +76,7 @@ index_body = f'''
     {tr("в кадре и на сцене", "кадрда және сахнада", "what's on", "h2")}
     <div class="row">
       <div class="row-img">
-        <img src="assets/gallery/gal_port_white.jpg" style="object-position:center 15%;" alt="Айару Абдолла">
+        <img src="assets/home_mian3.jpg" alt="Айару Абдолла с домбырой">
       </div>
       <div class="row-content">
         {tr("Талант, пластика и живые эмоции", "Дарын, пластика және шынайы эмоция", "Versatility, Music & Authentic Emotion", "h3")}
@@ -95,7 +95,7 @@ index_body = f'''
     {tr("недавние работы", "соңғы жобалар", "recently", "h2")}
     <div class="row rev">
       <div class="row-img">
-        <img src="assets/gallery/gal_emotions.jpg" style="object-position:center 15%;" alt="Актёрская карта эмоций">
+        <img src="assets/home_main.jpg" alt="Айару Абдолла в сценическом образе">
       </div>
       <div class="row-content">
         {tr("От драматического кино до рекламы", "Драмалық кинодан жарнамаға дейін", "From Dramatic Television to Commercials", "h3")}
