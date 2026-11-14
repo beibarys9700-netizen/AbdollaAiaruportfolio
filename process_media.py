@@ -105,3 +105,4 @@ for gid, src, title, cat in gallery_photos:
         im.save(g_out, quality=88)
 
 print('Gallery photos processed!')
+
