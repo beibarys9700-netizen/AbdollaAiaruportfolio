@@ -24,7 +24,6 @@
         <div id="auth-error" class="auth-error">Неверный PIN-код</div>
         <button type="submit" class="adm-btn adm-btn-primary full">Войти</button>
       </form>
-      <small class="auth-hint">PIN-код по умолчанию: <b>7429</b> (последние цифры номера)</small>
     </div>
   </div>
 
@@ -410,18 +409,18 @@
         </div>
 
         <div class="adm-card">
-          <h3>🔒 Безопасность и PIN-код</h3>
-          <p style="margin:10px 0 16px;color:#556;">Измените PIN-код для входа в данную панель управления.</p>
+          <h3>🔒 Безопасность и пароль доступа</h3>
+          <p style="margin:10px 0 16px;color:#556;">PIN-код скрыт и известен только вам и родителям. Здесь вы можете изменить его в любой момент.</p>
           <div class="form-group">
-            <label>Текущий PIN-код:</label>
-            <input type="text" id="current-pin-display" readonly style="background:#f4f4f4;">
+            <label>Статус защиты:</label>
+            <input type="text" id="current-pin-display" value="•••• (Пароль активен)" readonly style="background:#f4f4f4;font-weight:600;color:#257850;">
           </div>
           <div class="form-group" style="margin-top:12px;">
-            <label>Новый PIN-код:</label>
-            <input type="password" id="new-pin-input" maxlength="8" placeholder="Введите новый PIN">
+            <label>Новый пароль / PIN-код:</label>
+            <input type="password" id="new-pin-input" maxlength="16" placeholder="Введите новый секретный пароль">
           </div>
           <button type="button" class="adm-btn adm-btn-primary" style="margin-top:12px;" onclick="changePinCode()">
-            Сохранить новый PIN
+            Сохранить новый пароль
           </button>
         </div>
       </div>

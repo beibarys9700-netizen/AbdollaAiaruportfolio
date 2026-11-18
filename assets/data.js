@@ -1,5 +1,4 @@
 window.PORTFOLIO_DATA = {
-  "admin_pin": "7429",
   "info": {
     "name_ru": "Айару Абдолла",
     "name_kz": "Айару Абдолла",
@@ -1494,5 +1493,6 @@ window.PORTFOLIO_DATA = {
       "Хикая / Көпшілік сахна",
       "TV Series"
     ]
-  ]
+  ],
+  "admin_pin_hash": "fdbcf987fae167738b6002cf6ffe0581b553cc430e284ccdf82f733860b09772"
 };

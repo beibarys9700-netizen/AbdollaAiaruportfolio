@@ -61,8 +61,15 @@ body {
 }
 
 @keyframes authPop {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .auth-badge {
@@ -310,8 +317,15 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .adm-section-header {
@@ -850,18 +864,22 @@ body {
     gap: 14px;
     padding: 16px 20px;
   }
+
   .adm-header-right {
     width: 100%;
     flex-wrap: wrap;
   }
+
   .adm-header-right button {
     flex: 1;
   }
+
   .adm-grid-2,
   .adm-grid-3,
   .adm-grid-4 {
     grid-template-columns: 1fr;
   }
+
   .adm-vid-row {
     grid-template-columns: 1fr;
     gap: 10px;

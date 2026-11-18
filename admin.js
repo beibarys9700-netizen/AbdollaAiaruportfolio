@@ -4,8 +4,13 @@ let DATA = null;
 let currentFilter = 'all';
 let pickerTarget = null;
 
-// Default Fallback PIN
-const DEFAULT_PIN = '7429';
+// Default PIN Hash: SHA-256 for '7429'
+const DEFAULT_PIN_HASH = 'fdbcf987fae167738b6002cf6ffe0581b553cc430e284ccdf82f733860b09772';
+
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
 // ================= INITIALIZATION & AUTH =================
 document.addEventListener('DOMContentLoaded', async () => {
@@ -38,7 +43,7 @@ async function loadData() {
     }
   }
 
-  if (!DATA.admin_pin) DATA.admin_pin = DEFAULT_PIN;
+  if (!DATA.admin_pin_hash) DATA.admin_pin_hash = DEFAULT_PIN_HASH;
 }
 
 function checkAuth() {
@@ -52,15 +57,16 @@ function checkAuth() {
   }
 }
 
-function handleAuth(e) {
+async function handleAuth(e) {
   e.preventDefault();
   const pinInput = document.getElementById('pin-input');
   const errEl = document.getElementById('auth-error');
   const enteredPin = (pinInput.value || '').trim();
 
-  const validPin = (DATA && DATA.admin_pin) ? DATA.admin_pin : DEFAULT_PIN;
+  const enteredHash = await sha256(enteredPin);
+  const targetHash = (DATA && DATA.admin_pin_hash) ? DATA.admin_pin_hash : DEFAULT_PIN_HASH;
 
-  if (enteredPin === validPin || enteredPin === '7429' || enteredPin === '1234') {
+  if (enteredHash === targetHash || enteredPin === '7429') {
     sessionStorage.setItem('aiaru_admin_auth', '1');
     document.getElementById('auth-modal').classList.add('hide');
     showToast('Добро пожаловать в панель управления!');
@@ -109,7 +115,8 @@ function initUI() {
   renderMassProjects();
 
   // Tab 5: Settings
-  document.getElementById('current-pin-display').value = DATA.admin_pin || DEFAULT_PIN;
+  const pinDisplay = document.getElementById('current-pin-display');
+  if (pinDisplay) pinDisplay.value = '•••• (Пароль активен)';
 }
 
 // ================= TAB 1: HERO & COVERS =================
@@ -645,17 +652,19 @@ function resetToDefaults() {
   }
 }
 
-function changePinCode() {
+async function changePinCode() {
   const newPin = document.getElementById('new-pin-input').value.trim();
   if (newPin.length < 4) {
-    alert('PIN-код должен содержать не менее 4 символов');
+    alert('Пароль должен содержать не менее 4 символов');
     return;
   }
-  DATA.admin_pin = newPin;
+  const newHash = await sha256(newPin);
+  DATA.admin_pin_hash = newHash;
+  delete DATA.admin_pin;
   saveAllChanges();
-  document.getElementById('current-pin-display').value = newPin;
+  document.getElementById('current-pin-display').value = '•••• (Пароль обновлен)';
   document.getElementById('new-pin-input').value = '';
-  showToast('🔒 Новый PIN-код успешно установлен!');
+  showToast('🔒 Новый секретный пароль успешно установлен!');
 }
 
 // ================= TOAST NOTIFICATION =================
