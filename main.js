@@ -83,6 +83,9 @@ document.body.insertAdjacentHTML('beforeend', `
       <a href="https://wa.me/77784767899" target="_blank" rel="noopener" aria-label="WhatsApp">${ico.wa}</a>
     </div>
     <p>© ${new Date().getFullYear()} <span data-ui="footer_copy">Айару Абдолла · Актриса и вокалистка · Алматы, Казахстан</span></p>
+    <div style="margin-top:14px;">
+      <a href="admin.html" style="font-size:11.5px;opacity:0.35;text-decoration:none;letter-spacing:0.04em;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.35">⚙️ Управление сайтом</a>
+    </div>
   </footer>
   <div class="toast" id="toast"></div>
 `);
@@ -321,4 +324,60 @@ if (lb) {
       else showImage(currentIndex + 1);
     }
   }, { passive: true });
+
+  window.showGalleryImage = showImage;
 }
+
+// ================= LIVE CMS OVERRIDE (FROM LOCALSTORAGE) =================
+(function initLiveCMS() {
+  const customDataStr = localStorage.getItem('aiaru_portfolio_custom_data');
+  if (!customDataStr) return;
+  try {
+    const data = JSON.parse(customDataStr);
+    
+    // Hero Cover & Focus
+    if (data.hero) {
+      const heroEl = document.getElementById('home-hero');
+      if (heroEl) {
+        if (data.hero.image) heroEl.style.backgroundImage = `url("${data.hero.image}")`;
+        if (data.hero.focus) heroEl.style.backgroundPosition = data.hero.focus;
+      }
+    }
+
+    // Home Rows
+    if (data.home_rows) {
+      const r1 = document.querySelector('#home-row1-img img');
+      if (r1 && data.home_rows.row1_image) r1.src = data.home_rows.row1_image;
+      const r2 = document.querySelector('#home-row2-img img');
+      if (r2 && data.home_rows.row2_image) r2.src = data.home_rows.row2_image;
+    }
+
+    // Dynamic Gallery update (if items were modified in Admin)
+    if (data.gallery && page === 'gallery') {
+      const grid = document.getElementById('gallery-grid');
+      if (grid && data.gallery.length) {
+        grid.innerHTML = data.gallery.map(it => `
+          <div class="gal-item${it.is_wide ? ' wide' : ''} reveal in" data-c="${it.cat}" data-id="${it.id}">
+            <img src="${it.src}" alt="${it.title_ru || ''}" loading="lazy">
+            <div class="gal-item-info">
+              <div>
+                <h4>${it.title_ru || ''}</h4>
+                <span>${it.desc_ru || ''}</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        grid.querySelectorAll('.gal-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const visible = Array.from(document.querySelectorAll('.gal-item:not(.hide)'));
+            const idx = visible.indexOf(item);
+            if (idx !== -1 && window.showGalleryImage) window.showGalleryImage(idx);
+          });
+        });
+      }
+    }
+  } catch (err) {
+    console.error('Error applying live CMS data:', err);
+  }
+})();

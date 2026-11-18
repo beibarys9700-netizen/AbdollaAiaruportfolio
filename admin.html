@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Панель управления — Портфолио Айару Абдолла</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- PIN Protection Modal -->
+  <div id="auth-modal" class="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-badge">🔒 Вход в панель управления</div>
+      <h2>Портфолио Айару Абдолла</h2>
+      <p>Введите PIN-код администратора для редактирования сайта</p>
+      <form id="auth-form" onsubmit="handleAuth(event)">
+        <div class="pin-inputs">
+          <input type="password" id="pin-input" maxlength="8" placeholder="••••" autocomplete="off" autofocus required>
+        </div>
+        <div id="auth-error" class="auth-error">Неверный PIN-код</div>
+        <button type="submit" class="adm-btn adm-btn-primary full">Войти</button>
+      </form>
+      <small class="auth-hint">PIN-код по умолчанию: <b>7429</b> (последние цифры номера)</small>
+    </div>
+  </div>
+
+  <!-- Admin Header -->
+  <header class="adm-header">
+    <div class="adm-header-left">
+      <a href="index.html" class="adm-back-link" title="Вернуться на сайт">← На сайт</a>
+      <div class="adm-title">
+        <h1>Панель управления</h1>
+        <span>Айару Абдолла · Актерское портфолио</span>
+      </div>
+    </div>
+    <div class="adm-header-right">
+      <button type="button" class="adm-btn adm-btn-save" onclick="saveAllChanges()">
+        <span class="icon">💾</span> Сохранить изменения
+      </button>
+      <button type="button" class="adm-btn adm-btn-secondary" onclick="exportDataJson()">
+        <span class="icon">📥</span> Скачать data.json
+      </button>
+      <button type="button" class="adm-btn adm-btn-ghost" onclick="logoutAdmin()" title="Выйти">
+        Выйти
+      </button>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="adm-nav">
+    <div class="adm-nav-inner">
+      <button type="button" class="adm-tab active" data-tab="hero" onclick="switchTab('hero')">
+        <span class="tab-icon">🖼️</span> Заставки и обложки
+      </button>
+      <button type="button" class="adm-tab" data-tab="gallery" onclick="switchTab('gallery')">
+        <span class="tab-icon">📸</span> Галерея фото (<span id="tab-gal-count">90</span>)
+      </button>
+      <button type="button" class="adm-tab" data-tab="profile" onclick="switchTab('profile')">
+        <span class="tab-icon">👤</span> Анкета и биография
+      </button>
+      <button type="button" class="adm-tab" data-tab="videos" onclick="switchTab('videos')">
+        <span class="tab-icon">🎬</span> Видео и проекты (<span id="tab-vid-count">20</span>)
+      </button>
+      <button type="button" class="adm-tab" data-tab="settings" onclick="switchTab('settings')">
+        <span class="tab-icon">⚙️</span> Синхронизация и PIN
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="adm-main">
+
+    <!-- ================= TAB 1: HERO & COVERS ================= -->
+    <section id="tab-hero" class="adm-section active">
+      <div class="adm-section-header">
+        <div>
+          <h2>Главные заставки и обложки</h2>
+          <p>Выберите заставку первого экрана и фотографии ключевых блоков главной страницы</p>
+        </div>
+      </div>
+
+      <!-- Main Hero Cover -->
+      <div class="adm-card">
+        <div class="adm-card-head">
+          <h3>🌟 Главный экран (Hero Banner)</h3>
+          <span class="badge">index.html</span>
+        </div>
+        <div class="hero-preview-wrap">
+          <div id="hero-live-preview" class="hero-live-box">
+            <div class="hero-preview-overlay">
+              <div class="hero-preview-txt">
+                <h4 id="preview-hero-title">Айару<br>Абдолла</h4>
+                <p id="preview-hero-sub">АКТРИСА · ВОКАЛИСТКА · АЛМАТЫ</p>
+                <div class="hero-preview-btn">СКАЧАТЬ PDF ПОРТФОЛИО</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="adm-grid-2" style="margin-top:20px;">
+          <div class="form-group">
+            <label>Путь к фото или ссылка:</label>
+            <div class="input-with-btn">
+              <input type="text" id="hero-img-input" oninput="updateHeroPreview()">
+              <button type="button" class="adm-btn adm-btn-secondary" onclick="openGalleryPicker('hero')">Выбрать из галереи</button>
+            </div>
+            <small>Или загрузите файл с компьютера:</small>
+            <input type="file" accept="image/*" onchange="uploadImageFor('hero', this)">
+          </div>
+
+          <div class="form-group">
+            <label>Фокусировка по вертикали (%):</label>
+            <div class="range-wrap">
+              <input type="range" id="hero-focus-range" min="0" max="100" value="18" oninput="updateHeroFocus(this.value)">
+              <span id="hero-focus-val">18%</span>
+            </div>
+            <small>0% — верх фото, 50% — центр, 100% — низ</small>
+          </div>
+        </div>
+
+        <div class="adm-grid-3" style="margin-top:14px;">
+          <div class="form-group">
+            <label>Имя артиста (RU):</label>
+            <input type="text" id="hero-t-ru" oninput="updateHeroPreview()">
+          </div>
+          <div class="form-group">
+            <label>Аты-жөні (KZ):</label>
+            <input type="text" id="hero-t-kz">
+          </div>
+          <div class="form-group">
+            <label>Name (EN):</label>
+            <input type="text" id="hero-t-en">
+          </div>
+        </div>
+
+        <div class="adm-grid-3" style="margin-top:10px;">
+          <div class="form-group">
+            <label>Подзаголовок (RU):</label>
+            <input type="text" id="hero-sub-ru" oninput="updateHeroPreview()">
+          </div>
+          <div class="form-group">
+            <label>Қосалқы тақырып (KZ):</label>
+            <input type="text" id="hero-sub-kz">
+          </div>
+          <div class="form-group">
+            <label>Subtitle (EN):</label>
+            <input type="text" id="hero-sub-en">
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Rows Covers -->
+      <div class="adm-grid-2" style="margin-top:24px;">
+        <!-- Row 1: В кадре и на сцене -->
+        <div class="adm-card">
+          <div class="adm-card-head">
+            <h3>Фото 2-го блока («В кадре и на сцене»)</h3>
+          </div>
+          <div class="row-cover-thumb">
+            <img id="row1-img-preview" src="" alt="Row 1">
+          </div>
+          <div class="form-group" style="margin-top:12px;">
+            <label>Путь к фото:</label>
+            <div class="input-with-btn">
+              <input type="text" id="row1-img-input" onchange="updateRow1Preview()">
+              <button type="button" class="adm-btn adm-btn-secondary" onclick="openGalleryPicker('row1')">Из галереи</button>
+            </div>
+            <input type="file" accept="image/*" onchange="uploadImageFor('row1', this)">
+          </div>
+          <div class="form-group" style="margin-top:10px;">
+            <label>Заголовок (RU):</label>
+            <input type="text" id="row1-t-ru">
+          </div>
+          <div class="form-group" style="margin-top:10px;">
+            <label>Описание (RU):</label>
+            <textarea id="row1-d-ru" rows="3"></textarea>
+          </div>
+        </div>
+
+        <!-- Row 2: Недавние работы -->
+        <div class="adm-card">
+          <div class="adm-card-head">
+            <h3>Фото 3-го блока («Недавние работы»)</h3>
+          </div>
+          <div class="row-cover-thumb">
+            <img id="row2-img-preview" src="" alt="Row 2">
+          </div>
+          <div class="form-group" style="margin-top:12px;">
+            <label>Путь к фото:</label>
+            <div class="input-with-btn">
+              <input type="text" id="row2-img-input" onchange="updateRow2Preview()">
+              <button type="button" class="adm-btn adm-btn-secondary" onclick="openGalleryPicker('row2')">Из галереи</button>
+            </div>
+            <input type="file" accept="image/*" onchange="uploadImageFor('row2', this)">
+          </div>
+          <div class="form-group" style="margin-top:10px;">
+            <label>Заголовок (RU):</label>
+            <input type="text" id="row2-t-ru">
+          </div>
+          <div class="form-group" style="margin-top:10px;">
+            <label>Описание (RU):</label>
+            <textarea id="row2-d-ru" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: GALLERY CMS ================= -->
+    <section id="tab-gallery" class="adm-section">
+      <div class="adm-section-header">
+        <div>
+          <h2>Управление фотогалереей</h2>
+          <p>Добавляйте новые снимки, редактируйте описания, удаляйте или назначайте заставками в 1 клик</p>
+        </div>
+        <div class="adm-header-actions">
+          <button type="button" class="adm-btn adm-btn-primary" onclick="openAddPhotoModal()">
+            <span class="icon">＋</span> Добавить фото
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter & Search Bar -->
+      <div class="adm-toolbar">
+        <div class="adm-search">
+          <input type="text" id="gal-search-input" placeholder="Поиск по названию или описанию..." oninput="filterGalleryView()">
+        </div>
+        <div class="adm-filter-pills" id="gal-category-filters">
+          <button type="button" class="adm-pill active" onclick="setGalleryFilter('all', this)">Все (<span id="cnt-all">0</span>)</button>
+          <button type="button" class="adm-pill" onclick="setGalleryFilter('cinema', this)">Кино & Съёмки (<span id="cnt-cinema">0</span>)</button>
+          <button type="button" class="adm-pill" onclick="setGalleryFilter('portraits', this)">Портреты (<span id="cnt-portraits">0</span>)</button>
+          <button type="button" class="adm-pill" onclick="setGalleryFilter('music', this)">Музыка & Сцена (<span id="cnt-music">0</span>)</button>
+          <button type="button" class="adm-pill" onclick="setGalleryFilter('redcarpet', this)">Премьеры (<span id="cnt-redcarpet">0</span>)</button>
+          <button type="button" class="adm-pill" onclick="setGalleryFilter('awards', this)">Награды (<span id="cnt-awards">0</span>)</button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="adm-gal-grid" id="adm-gal-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: PROFILE & BIO ================= -->
+    <section id="tab-profile" class="adm-section">
+      <div class="adm-section-header">
+        <div>
+          <h2>Анкета и биография артистки</h2>
+          <p>Персональные данные, параметры, контакты и многоязычная биография</p>
+        </div>
+      </div>
+
+      <div class="adm-card">
+        <h3>📋 Основные параметры кастинг-анкеты</h3>
+        <div class="adm-grid-4" style="margin-top:16px;">
+          <div class="form-group">
+            <label>Имя артиста (RU):</label>
+            <input type="text" id="prof-name-ru">
+          </div>
+          <div class="form-group">
+            <label>Аты-жөні (KZ):</label>
+            <input type="text" id="prof-name-kz">
+          </div>
+          <div class="form-group">
+            <label>Full Name (EN):</label>
+            <input type="text" id="prof-name-en">
+          </div>
+          <div class="form-group">
+            <label>Дата рождения (ГГГГ-ММ-ДД):</label>
+            <input type="date" id="prof-dob" onchange="updateCalculatedAge()">
+            <small id="prof-age-badge" style="color:var(--adm-primary);font-weight:600;"></small>
+          </div>
+        </div>
+
+        <div class="adm-grid-3" style="margin-top:14px;">
+          <div class="form-group">
+            <label>Рост (см):</label>
+            <input type="number" id="prof-height">
+          </div>
+          <div class="form-group">
+            <label>Город (RU):</label>
+            <input type="text" id="prof-city-ru">
+          </div>
+          <div class="form-group">
+            <label>Қаласы (KZ):</label>
+            <input type="text" id="prof-city-kz">
+          </div>
+        </div>
+
+        <div class="adm-grid-3" style="margin-top:14px;">
+          <div class="form-group">
+            <label>Телефон Айару:</label>
+            <input type="text" id="prof-phone-aiaru">
+          </div>
+          <div class="form-group">
+            <label>Телефон мамы (Жанар):</label>
+            <input type="text" id="prof-phone-mama">
+          </div>
+          <div class="form-group">
+            <label>Instagram аккаунт:</label>
+            <input type="text" id="prof-instagram" placeholder="superstar_aiaru">
+          </div>
+        </div>
+      </div>
+
+      <div class="adm-card" style="margin-top:20px;">
+        <h3>🎭 Навыки, инструменты и обучение</h3>
+        <div class="adm-grid-2" style="margin-top:14px;">
+          <div class="form-group">
+            <label>Языки (RU):</label>
+            <input type="text" id="prof-lang-ru">
+          </div>
+          <div class="form-group">
+            <label>Музыкальные инструменты (RU):</label>
+            <input type="text" id="prof-inst-ru">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:14px;">
+          <label>Хобби и творчество (RU):</label>
+          <textarea id="prof-hobbies-ru" rows="2"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-top:14px;">
+          <label>Курсы и обучение (RU):</label>
+          <textarea id="prof-courses-ru" rows="2"></textarea>
+        </div>
+      </div>
+
+      <div class="adm-card" style="margin-top:20px;">
+        <h3>📖 Текст страницы «Обо мне» (Биография)</h3>
+        <div class="form-group" style="margin-top:14px;">
+          <label>Абзац 1 (Приветствие и специфика):</label>
+          <textarea id="prof-bio-p1-ru" rows="2"></textarea>
+        </div>
+        <div class="form-group" style="margin-top:14px;">
+          <label>Абзац 2 (Ключевые роли в кино и рекламе):</label>
+          <textarea id="prof-bio-p2-ru" rows="2"></textarea>
+        </div>
+        <div class="form-group" style="margin-top:14px;">
+          <label>Абзац 3 (Хобби, музыка и открытость проектам):</label>
+          <textarea id="prof-bio-p3-ru" rows="2"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 4: VIDEOS & PROJECTS ================= -->
+    <section id="tab-videos" class="adm-section">
+      <div class="adm-section-header">
+        <div>
+          <h2>Видеоматериалы и фильмография</h2>
+          <p>Редактируйте список видео-карточек (20 проектов) и строку фильмов массовки</p>
+        </div>
+        <div class="adm-header-actions">
+          <button type="button" class="adm-btn adm-btn-primary" onclick="openAddVideoModal()">
+            <span class="icon">＋</span> Добавить видео
+          </button>
+        </div>
+      </div>
+
+      <div class="adm-card">
+        <h3>🎬 Видеопроекты (Карточки на странице «Проекты»)</h3>
+        <div id="adm-videos-list" class="adm-videos-table" style="margin-top:16px;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="adm-card" style="margin-top:24px;">
+        <div class="adm-card-head">
+          <h3>🎞️ Фильмография (Строка проектов — 17 фильмов)</h3>
+          <button type="button" class="adm-btn adm-btn-secondary" onclick="addMassProject()">+ Добавить проект</button>
+        </div>
+        <div id="adm-mass-tags" class="mass-edit-tags" style="margin-top:14px;">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 5: SETTINGS & SYNC ================= -->
+    <section id="tab-settings" class="adm-section">
+      <div class="adm-section-header">
+        <div>
+          <h2>Синхронизация данных и настройки</h2>
+          <p>Управление резервными копиями, экспорт данных и безопасность</p>
+        </div>
+      </div>
+
+      <div class="adm-grid-2">
+        <div class="adm-card">
+          <h3>💾 Сохранение и экспорт</h3>
+          <p style="margin:10px 0 16px;color:#556;">Все изменения мгновенно сохраняются в вашем браузере. Чтобы изменения появились на Vercel для всех пользователей, скачайте обновленный data.json.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <button type="button" class="adm-btn adm-btn-save full" onclick="saveAllChanges()">
+              💾 Применить изменения на сайте прямо сейчас
+            </button>
+            <button type="button" class="adm-btn adm-btn-secondary full" onclick="exportDataJson()">
+              📥 Скачать обновленный data.json
+            </button>
+            <label class="adm-btn adm-btn-ghost full" style="text-align:center;cursor:pointer;">
+              📤 Загрузить data.json с компьютера
+              <input type="file" accept=".json" onchange="importDataJson(this)" style="display:none;">
+            </label>
+            <button type="button" class="adm-btn adm-btn-danger full" onclick="resetToDefaults()">
+              🔄 Сбросить к заводским настройкам
+            </button>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <h3>🔒 Безопасность и PIN-код</h3>
+          <p style="margin:10px 0 16px;color:#556;">Измените PIN-код для входа в данную панель управления.</p>
+          <div class="form-group">
+            <label>Текущий PIN-код:</label>
+            <input type="text" id="current-pin-display" readonly style="background:#f4f4f4;">
+          </div>
+          <div class="form-group" style="margin-top:12px;">
+            <label>Новый PIN-код:</label>
+            <input type="password" id="new-pin-input" maxlength="8" placeholder="Введите новый PIN">
+          </div>
+          <button type="button" class="adm-btn adm-btn-primary" style="margin-top:12px;" onclick="changePinCode()">
+            Сохранить новый PIN
+          </button>
+        </div>
+      </div>
+
+      <div class="adm-card" style="margin-top:24px;">
+        <h3>🚀 Как опубликовать обновления на Vercel</h3>
+        <ol style="margin-left:20px;margin-top:12px;line-height:1.8;color:#444;">
+          <li>Нажмите кнопку <b>«Скачать data.json»</b> выше.</li>
+          <li>Поместите скачанный файл в папку <code>assets/data.json</code> проекта.</li>
+          <li>Запустите в терминале <code>python build.py</code> и <code>git push</code>. Проект автоматически обновится на Vercel!</li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Gallery Picker Modal (for Hero / Row selection) -->
+  <div id="picker-modal" class="adm-modal-overlay">
+    <div class="adm-modal-card large">
+      <div class="adm-modal-head">
+        <h3 id="picker-title">Выберите фото из галереи</h3>
+        <button type="button" class="adm-modal-close" onclick="closeGalleryPicker()">✕</button>
+      </div>
+      <div class="picker-grid" id="picker-grid-container">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / Edit Photo Modal -->
+  <div id="photo-modal" class="adm-modal-overlay">
+    <div class="adm-modal-card">
+      <div class="adm-modal-head">
+        <h3 id="photo-modal-title">Редактирование фото</h3>
+        <button type="button" class="adm-modal-close" onclick="closePhotoModal()">✕</button>
+      </div>
+      <form id="photo-modal-form" onsubmit="savePhotoModal(event)">
+        <input type="hidden" id="edit-photo-id">
+        <div class="form-group">
+          <label>Превью:</label>
+          <div class="photo-modal-preview">
+            <img id="photo-modal-img" src="" alt="Preview">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Путь к фото / Ссылка:</label>
+          <input type="text" id="edit-photo-src" required oninput="document.getElementById('photo-modal-img').src=this.value">
+          <input type="file" accept="image/*" onchange="uploadImageForModal(this)" style="margin-top:6px;">
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Категория:</label>
+          <select id="edit-photo-cat">
+            <option value="cinema">Кино и съёмки (Cinema / Production)</option>
+            <option value="portraits">Портреты и хэдшоты (Headshots)</option>
+            <option value="music">Сцена и музыка (Stage & Music)</option>
+            <option value="redcarpet">Премьеры и фестивали (Red Carpet)</option>
+            <option value="awards">Награды и дипломы (Awards)</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Название фото (RU):</label>
+          <input type="text" id="edit-photo-t-ru" required>
+        </div>
+        <div class="form-group" style="margin-top:10px;">
+          <label>Краткое описание (RU):</label>
+          <input type="text" id="edit-photo-d-ru">
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;">
+          <button type="button" class="adm-btn adm-btn-ghost" onclick="closePhotoModal()">Отмена</button>
+          <button type="submit" class="adm-btn adm-btn-primary">Сохранить фото</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="adm-toast" class="adm-toast"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

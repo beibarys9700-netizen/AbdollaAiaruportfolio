@@ -14,19 +14,23 @@
 
 <main class="gal-page">
   <div class="gal-top">
-    <h1 data-ru="Фотогалерея" data-kz="Фотогалерея" data-en="Photo Gallery">Фотогалерея</h1>
+    <div>
+      <h1 data-ru="Фотогалерея" data-kz="Фотогалерея" data-en="Photo Gallery">Фотогалерея</h1>
+      <p class="gal-desc" data-ru="Всего 90 кадров со съёмок, премьер, концертов и студийных фотосессий" data-kz="Түсірілім, тұсаукесер, концерт және фотосессиялардан барлығы 90 кадр" data-en="Collection of 90 photos from film sets, red carpets, concerts and studio sessions">Всего 90 кадров со съёмок, премьер, концертов и студийных фотосессий</p>
+    </div>
     <div class="gal-subnav" data-filter-group>
-      <button type="button" class="on" data-f="all" data-ru="ВСЕ ФОТО (18)" data-kz="БАРЛЫҚ ФОТО (18)" data-en="ALL PHOTOS (18)">ВСЕ ФОТО (18)</button>
-      <button type="button" data-f="portraits" data-ru="ПОРТРЕТЫ И ХЭДШОТЫ" data-kz="ПОРТРЕТТЕР МЕН ХЭДШОТТАР" data-en="HEADSHOTS & PORTRAITS">ПОРТРЕТЫ И ХЭДШОТЫ</button>
-      <button type="button" data-f="kazakh" data-ru="НАЦИОНАЛЬНЫЕ ОБРАЗЫ" data-kz="ҰЛТТЫҚ ОБРАЗДАР" data-en="NATIONAL COSTUME">НАЦИОНАЛЬНЫЕ ОБРАЗЫ</button>
-      <button type="button" data-f="backstage" data-ru="СЪЁМКИ И БЭКСТЕЙДЖ" data-kz="ТҮСІРІЛІМ ЖӘНЕ БЭКСТЕЙДЖ" data-en="PRODUCTION SHOTS">СЪЁМКИ И БЭКСТЕЙДЖ</button>
-      <button type="button" data-f="awards" data-ru="КУБКИ И НАГРАДЫ" data-kz="КУБОКТАР МЕН МАРАПАТТАР" data-en="TROPHIES & AWARDS">КУБКИ И НАГРАДЫ</button>
+      <button type="button" class="on" data-f="all" data-ru="ВСЕ ФОТО (90)" data-kz="БАРЛЫҚ ФОТО (90)" data-en="ALL PHOTOS (90)">ВСЕ ФОТО (90)</button>
+      <button type="button" data-f="cinema" data-ru="КИНО И СЪЁМКИ (40)" data-kz="КИНО ЖӘНЕ ТҮСІРІЛІМ (40)" data-en="ON SET & CINEMA (40)">КИНО И СЪЁМКИ (40)</button>
+      <button type="button" data-f="portraits" data-ru="ПОРТРЕТЫ И ХЭДШОТЫ (18)" data-kz="ПОРТРЕТТЕР МЕН ХЭДШОТТАР (18)" data-en="PORTRAITS & HEADSHOTS (18)">ПОРТРЕТЫ И ХЭДШОТЫ (18)</button>
+      <button type="button" data-f="music" data-ru="СЦЕНА И МУЗЫКА (19)" data-kz="САХНА ЖӘНЕ МУЗЫКА (19)" data-en="STAGE & MUSIC (19)">СЦЕНА И МУЗЫКА (19)</button>
+      <button type="button" data-f="redcarpet" data-ru="ПРЕМЬЕРЫ И ФЕСТИВАЛИ (10)" data-kz="ТҰСАУКЕСЕР МЕН ФЕСТИВАЛЬ (10)" data-en="RED CARPET & EVENTS (10)">ПРЕМЬЕРЫ И ФЕСТИВАЛИ (10)</button>
+      <button type="button" data-f="awards" data-ru="НАГРАДЫ И ДИПЛОМЫ (3)" data-kz="МАРАПАТТАР МЕН ДИПЛОМДАР (3)" data-en="AWARDS & TROPHIES (3)">НАГРАДЫ И ДИПЛОМЫ (3)</button>
     </div>
   </div>
 
-  <div class="gal-grid">
+  <div class="gal-grid" id="gallery-grid">
     
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_port_white">
         <img src="assets/gallery/gal_port_white.jpg" alt="Студийный актёрский портрет" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -35,7 +39,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_emotions">
         <img src="assets/gallery/gal_emotions.jpg" alt="Актёрская карта эмоций (9 состояний)" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -44,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_port_black">
         <img src="assets/gallery/gal_port_black.jpg" alt="Крупный план в чёрном" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -53,7 +57,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_boat_roses">
         <img src="assets/gallery/gal_boat_roses.jpg" alt="Художественная съёмка в лодке с цветами" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -62,7 +66,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_leather">
         <img src="assets/gallery/gal_leather.jpg" alt="Образ в кожаной куртке-косухе" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -71,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_chanel_black">
         <img src="assets/gallery/gal_chanel_black.jpg" alt="Вечерний образ в чёрном платье" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -80,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_park_autumn">
         <img src="assets/gallery/gal_park_autumn.jpg" alt="Осенний портрет в парке" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -89,52 +93,43 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="portraits">
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_roses_bouquet">
         <img src="assets/gallery/gal_roses_bouquet.jpg" alt="Портрет с букетом роз" loading="lazy">
         <div class="gal-item-info">
           <div>
-            <h4 data-ru="Портрет с букетом роз" data-kz="Раушан гүл шоғымен портрет" data-en="Portrait with Rose Bouquet">Портрет с букетом роз</h4>
-            <span data-ru="Студийный портрет с улыбкой" data-kz="Күлімсіреген студиялық портрет" data-en="Warm Smiling Studio Shot">Студийный портрет с улыбкой</span>
+            <h4 data-ru="Портрет с букетом роз" data-kz="Раушан гүлдер шоғымен түскен портрет" data-en="Portrait with Roses">Портрет с букетом роз</h4>
+            <span data-ru="Нежный сценический образ" data-kz="Нәзік сахналық образ" data-en="Soft Stage Look">Нежный сценический образ</span>
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="kazakh">
+      <div class="gal-item reveal" data-c="music" data-id="gal_kazakh_red">
         <img src="assets/gallery/gal_kazakh_red.jpg" alt="Красный казахский камзол с орнаментом" loading="lazy">
         <div class="gal-item-info">
           <div>
-            <h4 data-ru="Красный казахский камзол с орнаментом" data-kz="Оюлы қызыл қазақ камзолы" data-en="Red Kazakh National Jacket">Красный казахский камзол с орнаментом</h4>
-            <span data-ru="Традиционный национальный образ" data-kz="Дәстүрлі ұлттық образ" data-en="Traditional Kazakh Costume">Традиционный национальный образ</span>
+            <h4 data-ru="Красный казахский камзол с орнаментом" data-kz="Қазақ ұлттық киімі" data-en="Traditional Kazakh Costume">Красный казахский камзол с орнаментом</h4>
+            <span data-ru="Сценический образ · Вокал и домбыра" data-kz="Сахналық образ · Вокал және домбыра" data-en="Traditional Attire · Music &amp; Dombra">Сценический образ · Вокал и домбыра</span>
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="kazakh">
+      <div class="gal-item reveal" data-c="music" data-id="gal_dombra_red">
         <img src="assets/gallery/gal_dombra_red.jpg" alt="С домбырой в красном костюме" loading="lazy">
         <div class="gal-item-info">
           <div>
-            <h4 data-ru="С домбырой в красном костюме" data-kz="Қызыл ұлттық костюмде домбырамен" data-en="With Dombra in Red Costume">С домбырой в красном костюме</h4>
-            <span data-ru="Музыкальное исполнительское искусство" data-kz="Музыкалық орындаушылық өнер" data-en="Traditional Dombra Performer">Музыкальное исполнительское искусство</span>
+            <h4 data-ru="С домбырой в красном костюме" data-kz="Фортепиано жанында" data-en="At the Piano">С домбырой в красном костюме</h4>
+            <span data-ru="Инструментальное творчество" data-kz="Аспаптық шығармашылық" data-en="Instrumental Performance">Инструментальное творчество</span>
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="kazakh">
-        <img src="assets/gallery/gal_kazakh_black.jpg" alt="Чёрный стилизованный казахский наряд" loading="lazy">
+      <div class="gal-item reveal" data-c="music" data-id="gal_dombra_black">
+        <img src="assets/gallery/gal_dombra_black.jpg" alt="С домбырой в чёрном костюме" loading="lazy">
         <div class="gal-item-info">
           <div>
-            <h4 data-ru="Чёрный стилизованный казахский наряд" data-kz="Қара стилизациаланған ұлттық киім" data-en="Black Stylized Kazakh Costume">Чёрный стилизованный казахский наряд</h4>
-            <span data-ru="Серебряный орнамент · Крупный план" data-kz="Күміс ою-өрнек · Ірі план" data-en="Silver Ornament Close-Up">Серебряный орнамент · Крупный план</span>
+            <h4 data-ru="С домбырой в чёрном костюме" data-kz="Табиғат аясында домбырамен" data-en="Dombra in the Outdoors">С домбырой в чёрном костюме</h4>
+            <span data-ru="Традиционная музыка и вокал" data-kz="Дәстүрлі музыка және вокал" data-en="Traditional Music &amp; Vocals">Традиционная музыка и вокал</span>
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="kazakh">
-        <img src="assets/gallery/gal_dombra_black.jpg" alt="С домбырой в чёрном наряде" loading="lazy">
-        <div class="gal-item-info">
-          <div>
-            <h4 data-ru="С домбырой в чёрном наряде" data-kz="Қара костюмде домбырамен" data-en="With Dombra in Black Costume">С домбырой в чёрном наряде</h4>
-            <span data-ru="Традиционный кюй и вокал" data-kz="Дәстүрлі күй және вокал" data-en="Traditional Music &amp; Vocals">Традиционный кюй и вокал</span>
-          </div>
-        </div>
-      </div>
-      <div class="gal-item reveal" data-c="kazakh">
+      <div class="gal-item reveal" data-c="music" data-id="gal_dance_arms">
         <img src="assets/gallery/gal_dance_arms.jpg" alt="Пластика казахского танца" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -143,7 +138,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="kazakh">
+      <div class="gal-item reveal" data-c="music" data-id="gal_pink_dress">
         <img src="assets/gallery/gal_pink_dress.jpg" alt="Нежный национальный образ" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -152,7 +147,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="backstage">
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_clinic_doctor">
         <img src="assets/gallery/gal_clinic_doctor.jpg" alt="На съёмках в клинике с актёрами" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -161,7 +156,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="backstage">
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_lead_actor">
         <img src="assets/gallery/gal_lead_actor.jpg" alt="На съёмочной площадке сериала" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -170,7 +165,7 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="backstage">
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_director">
         <img src="assets/gallery/gal_director.jpg" alt="За кулисами съёмок и концерта" loading="lazy">
         <div class="gal-item-info">
           <div>
@@ -179,12 +174,669 @@
           </div>
         </div>
       </div>
-      <div class="gal-item reveal" data-c="awards">
+      <div class="gal-item reveal" data-c="awards" data-id="gal_trophies_2">
         <img src="assets/gallery/gal_trophies_2.jpg" alt="Кубки Гран-при и медали Айару" loading="lazy">
         <div class="gal-item-info">
           <div>
             <h4 data-ru="Кубки Гран-при и медали Айару" data-kz="Айарудың Гран-при кубоктары мен медальдары" data-en="Aiaru&#x27;s Grand Prix Trophies &amp; Medals">Кубки Гран-при и медали Айару</h4>
-            <span data-ru="Награды республиканских и международных вокальных конкурсов" data-kz="Республикалық және халықаралық вокал байқауларының марапаттары" data-en="National &amp; International Vocal Competition Awards">Награды республиканских и международных вокальных конкурсов</span>
+            <span data-ru="Награды вокальных конкурсов" data-kz="Вокал байқауларының марапаттары" data-en="Vocal Competition Awards">Награды вокальных конкурсов</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_01">
+        <img src="assets/gallery/gal_p_01.jpg" alt="Съёмки танцевально-спортивного проекта" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки танцевально-спортивного проекта" data-kz="Би-спорттық жобаның түсірілімі" data-en="Dance &amp; Sports Film Shoot">Съёмки танцевально-спортивного проекта</h4>
+            <span data-ru="Бэкстейдж съёмочной площадки" data-kz="Түсірілім алаңының бэкстейджі" data-en="Behind the scenes on set">Бэкстейдж съёмочной площадки</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_02">
+        <img src="assets/gallery/gal_p_02.jpg" alt="На съёмках с актёрами и коллегами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="На съёмках с актёрами и коллегами" data-kz="Актерлермен түсірілім алаңында" data-en="On Location with Cast &amp; Crew">На съёмках с актёрами и коллегами</h4>
+            <span data-ru="Рабочий процесс между дублями" data-kz="Дубльдер арасындағы жұмыс сәті" data-en="Working moments on location">Рабочий процесс между дублями</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_03">
+        <img src="assets/gallery/gal_p_03.jpg" alt="Читка сценария на кинолокации" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Читка сценария на кинолокации" data-kz="Түсірілім орнында сценарий оқу" data-en="Script Table Read on Location">Читка сценария на кинолокации</h4>
+            <span data-ru="Подготовка к сцене фильма" data-kz="Фильм сахнасына дайындық" data-en="Preparing for the next scene">Подготовка к сцене фильма</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_04">
+        <img src="assets/gallery/gal_p_04.jpg" alt="С наставником на киносъёмках" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С наставником на киносъёмках" data-kz="Түсірілімдегі ұстазбен бірге" data-en="With Mentor on Set">С наставником на киносъёмках</h4>
+            <span data-ru="Тёплая атмосфера на площадке" data-kz="Түсірілімдегі жылы көңіл-күй" data-en="On set working relationship">Тёплая атмосфера на площадке</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_05">
+        <img src="assets/gallery/gal_p_05.jpg" alt="С партнёром по фильму" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С партнёром по фильму" data-kz="Фильмдегі серіктеспен бірге" data-en="With Co-Star on Location">С партнёром по фильму</h4>
+            <span data-ru="Игровой дуэт в кадре" data-kz="Кадрдағы ойын дуэті" data-en="Acting duo between takes">Игровой дуэт в кадре</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_06">
+        <img src="assets/gallery/gal_p_06.jpg" alt="Летний съёмочный день кинопроекта" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Летний съёмочный день кинопроекта" data-kz="Киножобаның жазғы түсірілім күні" data-en="Summer Film Shoot on Location">Летний съёмочный день кинопроекта</h4>
+            <span data-ru="Натурные съёмки в Алматы" data-kz="Алматыдағы ашық аспан астындағы түсірілім" data-en="Location filming in Almaty">Натурные съёмки в Алматы</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_07">
+        <img src="assets/gallery/gal_p_07.jpg" alt="Летний образ на съёмочной локации" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Летний образ на съёмочной локации" data-kz="Түсірілім орнындағы жазғы образ" data-en="Summer Location Portrait">Летний образ на съёмочной локации</h4>
+            <span data-ru="Естественный портрет в саду" data-kz="Бақтағы табиғи портрет" data-en="Natural daylight garden portrait">Естественный портрет в саду</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_08">
+        <img src="assets/gallery/gal_p_08.jpg" alt="В беседке между дублями с актёром" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="В беседке между дублями с актёром" data-kz="Дубль арасында актермен әңгіме" data-en="Between Takes with Co-Star">В беседке между дублями с актёром</h4>
+            <span data-ru="Момент отдыха на площадке" data-kz="Түсірілімдегі демалыс сәті" data-en="Resting between scenes on set">Момент отдыха на площадке</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_09">
+        <img src="assets/gallery/gal_p_09.jpg" alt="Съёмочный день на открытой площадке" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмочный день на открытой площадке" data-kz="Ашық алаңдағы түсірілім күні" data-en="Outdoor Film Production Day">Съёмочный день на открытой площадке</h4>
+            <span data-ru="С партнёрами по кинопроекту" data-kz="Киножоба серіктестерімен бірге" data-en="With production team members">С партнёрами по кинопроекту</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_10">
+        <img src="assets/gallery/gal_p_10.jpg" alt="Сериал «Сыныптас» — школьный каст" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Сериал «Сыныптас» — школьный каст" data-kz="«Сыныптас» телехикаясы — мектеп касты" data-en="Youth Series &quot;Synyptas&quot; School Cast">Сериал «Сыныптас» — школьный каст</h4>
+            <span data-ru="Айару в роли ученицы с одноклассниками" data-kz="Сыныптастарымен бірге түсірілімде" data-en="Aiaru on set with student cast">Айару в роли ученицы с одноклассниками</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_11">
+        <img src="assets/gallery/gal_p_11.jpg" alt="Рабочий момент сериала («80s Retro»)" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Рабочий момент сериала («80s Retro»)" data-kz="«80-жылдар» ретро-хикаясының сәті" data-en="Retro Series Production Scene">Рабочий момент сериала («80s Retro»)</h4>
+            <span data-ru="Съёмки молодёжного проекта" data-kz="Жастар жобасының түсірілімі" data-en="Youth TV series filming">Съёмки молодёжного проекта</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_12">
+        <img src="assets/gallery/gal_p_12.jpg" alt="Съёмки в школьном коридоре" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки в школьном коридоре" data-kz="Мектеп дәлізіндегі түсірілім" data-en="School Hallway Scene Shoot">Съёмки в школьном коридоре</h4>
+            <span data-ru="С партнёром по телесериалу" data-kz="Телехикаядағы әріптесімен бірге" data-en="On set with co-star">С партнёром по телесериалу</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_13">
+        <img src="assets/gallery/gal_p_13.jpg" alt="С режиссёром кинопроекта" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С режиссёром кинопроекта" data-kz="Киножоба режиссерімен бірге" data-en="With Film Director on Set">С режиссёром кинопроекта</h4>
+            <span data-ru="Обсуждение сцены перед мотором" data-kz="Мотор алдында сахнаны талқылау" data-en="Directorial scene briefing">Обсуждение сцены перед мотором</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_14">
+        <img src="assets/gallery/gal_p_14.jpg" alt="С кинохлопушкой проекта" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С кинохлопушкой проекта" data-kz="Кинохлопушкамен түсірілімде" data-en="With Scene Clapperboard on Set">С кинохлопушкой проекта</h4>
+            <span data-ru="Кадр, дубль, мотор! Айару в кадре" data-kz="Кадр, дубль, мотор! Айару түсірілімде" data-en="Scene clapperboard on production set">Кадр, дубль, мотор! Айару в кадре</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_15">
+        <img src="assets/gallery/gal_p_15.jpg" alt="Школьные сцены сериала" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Школьные сцены сериала" data-kz="Хикаяның мектеп сахналары" data-en="School Drama Episode Filming">Школьные сцены сериала</h4>
+            <span data-ru="С партнёршей по роли" data-kz="Рөлдегі серіктесімен бірге" data-en="With student co-star on set">С партнёршей по роли</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_16">
+        <img src="assets/gallery/gal_p_16.jpg" alt="Крупный план на съёмках молодёжной драмы" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Крупный план на съёмках молодёжной драмы" data-kz="Жастар драмасы түсіріліміндегі ірі план" data-en="Close-Up on Teen Drama Set">Крупный план на съёмках молодёжной драмы</h4>
+            <span data-ru="Эмоциональный кадр на площадке" data-kz="Түсірілімдегі эмоционалды сәт" data-en="Emotional acting moment on set">Эмоциональный кадр на площадке</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_17">
+        <img src="assets/gallery/gal_p_17.jpg" alt="Актёрский состав школьного сериала" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Актёрский состав школьного сериала" data-kz="Мектеп хикаясының актерлік құрамы" data-en="School TV Drama Acting Cast">Актёрский состав школьного сериала</h4>
+            <span data-ru="Съёмки многосерийного проекта" data-kz="Көпсериялы жобаның түсірілімі" data-en="Series cast between takes">Съёмки многосерийного проекта</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_18">
+        <img src="assets/gallery/gal_p_18.jpg" alt="Художественная съёмка с лошадью в степи" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Художественная съёмка с лошадью в степи" data-kz="Далада жылқымен көркем түсірілім" data-en="Cinematic Steppe Shoot with Horse">Художественная съёмка с лошадью в степи</h4>
+            <span data-ru="Кинематографичный кадр на природе" data-kz="Табиғаттағы кинематографиялық кадр" data-en="Epic cinematic scene in the steppes">Кинематографичный кадр на природе</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_19">
+        <img src="assets/gallery/gal_p_19.jpg" alt="Кадр из исторической киносъёмки с лошадью" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Кадр из исторической киносъёмки с лошадью" data-kz="Жылқымен тарихи кинотүсірілім сәті" data-en="Period Film Scene with Horse">Кадр из исторической киносъёмки с лошадью</h4>
+            <span data-ru="Традиционный образ и грация" data-kz="Дәстүрлі образ бен үйлесім" data-en="Traditional Kazakh equine portrait">Традиционный образ и грация</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_20">
+        <img src="assets/gallery/gal_p_20.jpg" alt="Студийный кастинг-хэдшот с белой статуэткой" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Студийный кастинг-хэдшот с белой статуэткой" data-kz="Ақ мүсінмен студиялық кастинг-хэдшот" data-en="Studio Casting Headshot with Figurine">Студийный кастинг-хэдшот с белой статуэткой</h4>
+            <span data-ru="Актёрская анкета и типаж" data-kz="Актерлік сауалнама және типаж" data-en="Clean studio casting headshot">Актёрская анкета и типаж</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_21">
+        <img src="assets/gallery/gal_p_21.jpg" alt="Эмоциональный студийный портрет" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Эмоциональный студийный портрет" data-kz="Эмоционалды студиялық портрет" data-en="Expressive Studio Headshot">Эмоциональный студийный портрет</h4>
+            <span data-ru="Кастинг-тест на живую мимику" data-kz="Шынайы мимикаға кастинг-тест" data-en="Casting emotion &amp; character test">Кастинг-тест на живую мимику</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_22">
+        <img src="assets/gallery/gal_p_22.jpg" alt="Осенний портрет с листьями в парке" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Осенний портрет с листьями в парке" data-kz="Саябақта күзгі жапырақтармен портрет" data-en="Autumn Leaves Park Portrait">Осенний портрет с листьями в парке</h4>
+            <span data-ru="Яркий естественный образ" data-kz="Жарқын табиғи бейне" data-en="Vibrant natural daylight portrait">Яркий естественный образ</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_23">
+        <img src="assets/gallery/gal_p_23.jpg" alt="В парке на резной скамье" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="В парке на резной скамье" data-kz="Саябақтағы оюлы орындықта" data-en="Carved Bench Park Portrait">В парке на резной скамье</h4>
+            <span data-ru="Художественная фотосессия на природе" data-kz="Табиғаттағы көркем фотосессия" data-en="Editorial park outdoor portrait">Художественная фотосессия на природе</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_24">
+        <img src="assets/gallery/gal_p_24.jpg" alt="Съёмки остросюжетного детектива («111»)" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки остросюжетного детектива («111»)" data-kz="«111» өткір сюжетті детектив түсірілімі" data-en="Action Detective Series Shoot (&quot;111&quot;)">Съёмки остросюжетного детектива («111»)</h4>
+            <span data-ru="Сцена со спецназом и тактической группой" data-kz="Арнайы жасақпен бірге түсірілген сахна" data-en="Dramatic SWAT hostage scene on set">Сцена со спецназом и тактической группой</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_25">
+        <img src="assets/gallery/gal_p_25.jpg" alt="Модельный образ в кресле с алыми розами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Модельный образ в кресле с алыми розами" data-kz="Қызыл раушандармен креслодағы сәнді образ" data-en="Editorial Chair Portrait with Red Roses">Модельный образ в кресле с алыми розами</h4>
+            <span data-ru="Элегантная фотосессия в студии" data-kz="Студиядағы талғампаз фотосессия" data-en="Chic studio portrait look">Элегантная фотосессия в студии</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_26">
+        <img src="assets/gallery/gal_p_26.jpg" alt="Традиционный сценический костюм" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Традиционный сценический костюм" data-kz="Дәстүрлі сахналық киім" data-en="Traditional Stage Costume">Традиционный сценический костюм</h4>
+            <span data-ru="Концертное выступление с вокалом" data-kz="Вокалмен концерттік өнер көрсету" data-en="Concert performance attire">Концертное выступление с вокалом</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_27">
+        <img src="assets/gallery/gal_p_27.jpg" alt="Образ в изумрудном бархатном камзоле" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Образ в изумрудном бархатном камзоле" data-kz="Зүбәржат барқыт камзолдағы образ" data-en="Emerald Velvet Traditional Vest">Образ в изумрудном бархатном камзоле</h4>
+            <span data-ru="Национальный орнамент и стиль" data-kz="Ұлттық ою-өрнек пен салтанат" data-en="Traditional Kazakh embroidery look">Национальный орнамент и стиль</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_28">
+        <img src="assets/gallery/gal_p_28.jpg" alt="С вокальным ансамблем в нарядах" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С вокальным ансамблем в нарядах" data-kz="Вокалдық ансамбльмен бірге ұлттық киімде" data-en="With Traditional Ensemble Vocalists">С вокальным ансамблем в нарядах</h4>
+            <span data-ru="Торжественный концертный выход" data-kz="Салтанатты концерттік қойылым" data-en="Grand cultural stage appearance">Торжественный концертный выход</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_29">
+        <img src="assets/gallery/gal_p_29.jpg" alt="Исторический проект «Алтын Орда» с батырами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Исторический проект «Алтын Орда» с батырами" data-kz="«Алтын Орда» тарихи жобасы батырлармен" data-en="&quot;Golden Horde&quot; Historical Drama with Warriors">Исторический проект «Алтын Орда» с батырами</h4>
+            <span data-ru="Съёмки в исторических доспехах" data-kz="Тарихи сауыт-саймандармен түсірілім" data-en="Period historical set with warrior cast">Съёмки в исторических доспехах</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_30">
+        <img src="assets/gallery/gal_p_30.jpg" alt="Сценический образ на торжественном приёме" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Сценический образ на торжественном приёме" data-kz="Салтанатты қабылдаудағы сахналық образ" data-en="Stage Costume at Grand Gala">Сценический образ на торжественном приёме</h4>
+            <span data-ru="Концертное мероприятие в Алматы" data-kz="Алматыдағы концерттік іс-шара" data-en="Grand cultural evening in Almaty">Концертное мероприятие в Алматы</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_31">
+        <img src="assets/gallery/gal_p_31.jpg" alt="Выступление на торжестве с вокалистами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Выступление на торжестве с вокалистами" data-kz="Салтанатты кеште вокалистермен ән айту" data-en="Gala Performance with Vocal Group">Выступление на торжестве с вокалистами</h4>
+            <span data-ru="Живой вокал и праздничная программа" data-kz="Жанды вокал және мерекелік бағдарлама" data-en="Live vocal gala performance">Живой вокал и праздничная программа</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_32">
+        <img src="assets/gallery/gal_p_32.jpg" alt="Праздничный сценический дуэт" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Праздничный сценический дуэт" data-kz="Мерекелік сахналық дуэт" data-en="Celebration Stage Duet">Праздничный сценический дуэт</h4>
+            <span data-ru="Национальная музыка и пение" data-kz="Ұлттық музыка мен ән" data-en="Kazakh musical celebration">Национальная музыка и пение</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_33">
+        <img src="assets/gallery/gal_p_33.jpg" alt="Международный фестиваль: выступление за роялем" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Международный фестиваль: выступление за роялем" data-kz="Халықаралық фестиваль: рояльде ойнау" data-en="International Festival: Piano Performance">Международный фестиваль: выступление за роялем</h4>
+            <span data-ru="Исполнение на рояле Yamaha в Ташкенте" data-kz="Ташкентте Yamaha роялінде орындау" data-en="Performing on Yamaha Grand Piano in Tashkent">Исполнение на рояле Yamaha в Ташкенте</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="awards" data-id="gal_p_34">
+        <img src="assets/gallery/gal_p_34.jpg" alt="Гран-при и диплом международного фестиваля" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Гран-при и диплом международного фестиваля" data-kz="Халықаралық фестивальдің Гран-приі мен дипломы" data-en="Grand Prix &amp; Diploma at International Festival">Гран-при и диплом международного фестиваля</h4>
+            <span data-ru="Айару в белом бальном платье с наградой" data-kz="Айару ақ бал көйлегінде марапатпен" data-en="Aiaru on stage with Grand Prix trophy">Айару в белом бальном платье с наградой</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_35">
+        <img src="assets/gallery/gal_p_35.jpg" alt="Фестивальный портрет в малиновом пальто" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Фестивальный портрет в малиновом пальто" data-kz="Таңқурай түстес пальтодағы фестивальдік портрет" data-en="Festival Portrait in Magenta Coat">Фестивальный портрет в малиновом пальто</h4>
+            <span data-ru="Набережная фестивального городка" data-kz="Фестиваль қалашығының жағалауында" data-en="Festival promenade portrait">Набережная фестивального городка</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_36">
+        <img src="assets/gallery/gal_p_36.jpg" alt="Новогодний сценический портрет у ёлки" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Новогодний сценический портрет у ёлки" data-kz="Шырша жанындағы жаңажылдық портрет" data-en="New Year Stage Portrait by Christmas Tree">Новогодний сценический портрет у ёлки</h4>
+            <span data-ru="Праздничное настроение и образ" data-kz="Мерекелік көңіл-күй мен жарқын бейне" data-en="Holiday stage portrait">Праздничное настроение и образ</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_37">
+        <img src="assets/gallery/gal_p_37.jpg" alt="В исторических интерьерах 70-х годов" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="В исторических интерьерах 70-х годов" data-kz="70-жылдардың тарихи интерьерінде" data-en="1970s Period Interior Film Set">В исторических интерьерах 70-х годов</h4>
+            <span data-ru="Декорации ретро-сериала «Было дело»" data-kz="«Было дело» ретро-хикаясының декорациялары" data-en="Period set for 1970s detective drama">Декорации ретро-сериала «Было дело»</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_38">
+        <img src="assets/gallery/gal_p_38.jpg" alt="Презентация фильма «Карина» (реж. М. Сиэгэн)" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Презентация фильма «Карина» (реж. М. Сиэгэн)" data-kz="«Карина» фильмінің тұсаукесері (реж. М. Сиэгэн)" data-en="&quot;Karina&quot; Film Presentation (dir. M. Siegen)">Презентация фильма «Карина» (реж. М. Сиэгэн)</h4>
+            <span data-ru="Айару на презентации якутского кинопроекта" data-kz="Якутиялық киножобаның тұсаукесерінде" data-en="Presentation of the film &quot;Karina&quot;">Айару на презентации якутского кинопроекта</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_39">
+        <img src="assets/gallery/gal_p_39.jpg" alt="Праздничная фотосессия с воздушными шарами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Праздничная фотосессия с воздушными шарами" data-kz="Әуе шарларымен мерекелік фотосессия" data-en="Celebration Shoot with Balloons">Праздничная фотосессия с воздушными шарами</h4>
+            <span data-ru="Яркий детский модельный образ" data-kz="Балалардың жарқын сәнді образы" data-en="Festive fashion portrait in magenta dress">Яркий детский модельный образ</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_40">
+        <img src="assets/gallery/gal_p_40.jpg" alt="Вечерний выход в золотистом наряде" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Вечерний выход в золотистом наряде" data-kz="Алтын түстес сахналық киімдегі кешкі образ" data-en="Golden Evening Gown Stage Appearance">Вечерний выход в золотистом наряде</h4>
+            <span data-ru="С партнёршами по вокальному шоу" data-kz="Вокалдық шоу серіктестерімен бірге" data-en="With vocal ensemble partners">С партнёршами по вокальному шоу</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_41">
+        <img src="assets/gallery/gal_p_41.jpg" alt="Съёмки торжественного эпизода в белом" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки торжественного эпизода в белом" data-kz="Ақ көйлектегі салтанатты эпизодтың түсірілімі" data-en="Filming Gala Episode in White Dresses">Съёмки торжественного эпизода в белом</h4>
+            <span data-ru="Натурные съёмки у классических колонн" data-kz="Классикалық бағандар жанындағы түсірілім" data-en="Location filming at classic colonnade">Натурные съёмки у классических колонн</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_42">
+        <img src="assets/gallery/gal_p_42.jpg" alt="Концертный вечер с ведущим мероприятия" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Концертный вечер с ведущим мероприятия" data-kz="Іс-шара жүргізушісімен концерттік кеш" data-en="Concert Gala Evening with Event Host">Концертный вечер с ведущим мероприятия</h4>
+            <span data-ru="На торжественной сцене в Алматы" data-kz="Алматыдағы салтанатты сахнада" data-en="On gala stage in Almaty">На торжественной сцене в Алматы</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="awards" data-id="gal_p_43">
+        <img src="assets/gallery/gal_p_43.jpg" alt="Вручение диплома с режиссёром проекта" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Вручение диплома с режиссёром проекта" data-kz="Жоба режиссерімен диплом табыстау сәті" data-en="Diploma Presentation with Film Director">Вручение диплома с режиссёром проекта</h4>
+            <span data-ru="Почётная награда за участие в проекте" data-kz="Жобаға қатысқаны үшін құрметті марапат" data-en="Honor diploma award on project completion">Почётная награда за участие в проекте</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_44">
+        <img src="assets/gallery/gal_p_44.jpg" alt="Стильный белый сценический костюм" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Стильный белый сценический костюм" data-kz="Сәнді ақ сахналық костюм" data-en="Stylish White Stage Suit">Стильный белый сценический костюм</h4>
+            <span data-ru="Съёмки клипа и сценического номера" data-kz="Бейнебаян мен сахналық нөмір түсірілімі" data-en="Music video &amp; stage choreography shoot">Съёмки клипа и сценического номера</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="portraits" data-id="gal_p_45">
+        <img src="assets/gallery/gal_p_45.jpg" alt="Бальное платье в предгорьях Алматы" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Бальное платье в предгорьях Алматы" data-kz="Алматы таулары аясындағы бал көйлегі" data-en="Ball Gown in the Almaty Foothills">Бальное платье в предгорьях Алматы</h4>
+            <span data-ru="Воздушный кинематографичный образ" data-kz="Жеңіл кинематографиялық бейне" data-en="Airy cinematic portrait in white gown">Воздушный кинематографичный образ</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_46">
+        <img src="assets/gallery/gal_p_46.jpg" alt="С актёром молодёжного сериала" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С актёром молодёжного сериала" data-kz="Жастар хикаясының актерімен бірге" data-en="With Teen Series Co-Star on Set">С актёром молодёжного сериала</h4>
+            <span data-ru="Тёплый момент между съёмками сцен" data-kz="Сахналар арасындағы жылы сәт" data-en="Fun off-camera moment with co-star">Тёплый момент между съёмками сцен</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_47">
+        <img src="assets/gallery/gal_p_47.jpg" alt="На съёмках проекта «Стадион»" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="На съёмках проекта «Стадион»" data-kz="«Стадион» киножобасының түсірілімінде" data-en="On the Bleachers of &quot;Stadium&quot; Project Set">На съёмках проекта «Стадион»</h4>
+            <span data-ru="Спортивная молодёжная драма" data-kz="Спорттық жастар драмасы" data-en="Sports youth film production set">Спортивная молодёжная драма</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_48">
+        <img src="assets/gallery/gal_p_48.jpg" alt="Спортивный молодёжный кинопроект" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Спортивный молодёжный кинопроект" data-kz="Спорттық жастар киножобасы" data-en="Sports Youth Cinema Project">Спортивный молодёжный кинопроект</h4>
+            <span data-ru="Съёмочный процесс на спортивной арене" data-kz="Спорт аренасындағы түсірілім барысы" data-en="Athletic film production in Almaty">Съёмочный процесс на спортивной арене</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_49">
+        <img src="assets/gallery/gal_p_49.jpg" alt="Натурные съёмки историко-молодёжного кино" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Натурные съёмки историко-молодёжного кино" data-kz="Тарихи-жастар киносының ашық аспандағы түсірілімі" data-en="Period Teen Drama Location Shoot">Натурные съёмки историко-молодёжного кино</h4>
+            <span data-ru="С исполнителем роли батыра с мечом" data-kz="Қылышты батыр рөліндегі актермен бірге" data-en="With sword-wielding hero co-star">С исполнителем роли батыра с мечом</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_50">
+        <img src="assets/gallery/gal_p_50.jpg" alt="Городские съёмки сериала у монумента" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Городские съёмки сериала у монумента" data-kz="Монумент жанындағы қалалық түсірілім" data-en="City Location Filming at Monument">Городские съёмки сериала у монумента</h4>
+            <span data-ru="Молодёжный каст кинопроекта" data-kz="Киножобаның жастар құрамы" data-en="Teen ensemble on city set">Молодёжный каст кинопроекта</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_51">
+        <img src="assets/gallery/gal_p_51.jpg" alt="Съёмки международной дорамы «Казахстан-Индия-Корея»" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки международной дорамы «Казахстан-Индия-Корея»" data-kz="«Қазақстан-Үнді-Корея» халықаралық дорама түсірілімі" data-en="&quot;Kazakhstan-India-Korea&quot; International Drama Set">Съёмки международной дорамы «Казахстан-Индия-Корея»</h4>
+            <span data-ru="С международной съёмочной группой" data-kz="Халықаралық түсірілім тобымен" data-en="With international production team">С международной съёмочной группой</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_52">
+        <img src="assets/gallery/gal_p_52.jpg" alt="На площадке с зарубежными кинематографистами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="На площадке с зарубежными кинематографистами" data-kz="Шетелдік киногерлермен түсірілім алаңында" data-en="On Set with International Filmmakers">На площадке с зарубежными кинематографистами</h4>
+            <span data-ru="Совместное кинопроизводство в Казахстане" data-kz="Қазақстандағы бірлескен киноөндіріс" data-en="Co-production film set in Kazakhstan">Совместное кинопроизводство в Казахстане</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_53">
+        <img src="assets/gallery/gal_p_53.jpg" alt="Съёмки сериала в классе с актрисой" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки сериала в классе с актрисой" data-kz="Сыныптағы түсірілім танымал актрисамен" data-en="Classroom TV Series Scene with Actress">Съёмки сериала в классе с актрисой</h4>
+            <span data-ru="Айару в роли прилежной ученицы" data-kz="Айару үздік оқушы рөлінде" data-en="Aiaru as student in classroom scene">Айару в роли прилежной ученицы</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_54">
+        <img src="assets/gallery/gal_p_54.jpg" alt="На съёмках сериала с киномамой" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="На съёмках сериала с киномамой" data-kz="Телехикаядағы анасымен түсірілімде" data-en="On Set with Screen Mother">На съёмках сериала с киномамой</h4>
+            <span data-ru="Эмоциональный рабочий контакт на съёмках" data-kz="Түсірілімдегі эмоционалды тығыз байланыс" data-en="Dramatic scene with screen mother">Эмоциональный рабочий контакт на съёмках</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_55">
+        <img src="assets/gallery/gal_p_55.jpg" alt="С известной актрисой на съёмочной площадке" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С известной актрисой на съёмочной площадке" data-kz="Танымал актрисамен түсірілім алаңында" data-en="With Renowned Screen Actress on Set">С известной актрисой на съёмочной площадке</h4>
+            <span data-ru="Тёплая дружеская поддержка между дублями" data-kz="Дубль арасындағы жылы достық қолдау" data-en="Warm moment between takes on set">Тёплая дружеская поддержка между дублями</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_56">
+        <img src="assets/gallery/gal_p_56.jpg" alt="Съёмки праздничного эпизода с шарами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки праздничного эпизода с шарами" data-kz="Шарлармен мерекелік эпизод түсірілімі" data-en="Festive School Episode Filming">Съёмки праздничного эпизода с шарами</h4>
+            <span data-ru="Школьный праздник в сериале" data-kz="Хикаядағы мектеп мерекесі" data-en="Celebration scene on school set">Школьный праздник в сериале</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_57">
+        <img src="assets/gallery/gal_p_57.jpg" alt="Съёмки школьной сцены с одноклассницей" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Съёмки школьной сцены с одноклассницей" data-kz="Сыныптасымен мектеп сахнасын түсіру" data-en="School Scene Filming with Co-Star">Съёмки школьной сцены с одноклассницей</h4>
+            <span data-ru="Сериал о дружбе и взрослении" data-kz="Достық пен өсу туралы телехикая" data-en="Coming of age youth series filming">Сериал о дружбе и взрослении</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_58">
+        <img src="assets/gallery/gal_p_58.jpg" alt="В школьном фойе во время съёмок" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="В школьном фойе во время съёмок" data-kz="Түсірілім кезіндегі мектеп фойесінде" data-en="School Lobby Set Between Takes">В школьном фойе во время съёмок</h4>
+            <span data-ru="Актёрский дуэт юных героинь" data-kz="Жас кейіпкерлердің актерлік дуэті" data-en="Young actress duo on location">Актёрский дуэт юных героинь</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_59">
+        <img src="assets/gallery/gal_p_59.jpg" alt="Селфи с режиссёром на съёмочной локации" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Селфи с режиссёром на съёмочной локации" data-kz="Түсірілім орнында режиссермен селфи" data-en="Selfie with Film Director on Location">Селфи с режиссёром на съёмочной локации</h4>
+            <span data-ru="Отличная творческая атмосфера в команде" data-kz="Ұжымдағы керемет шығармашылық көңіл-күй" data-en="Great rapport with film director">Отличная творческая атмосфера в команде</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_60">
+        <img src="assets/gallery/gal_p_60.jpg" alt="Пластика сценического танца в белом" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Пластика сценического танца в белом" data-kz="Ақ сахналық киімдегі би пластикасы" data-en="Graceful Stage Dance in White Suit">Пластика сценического танца в белом</h4>
+            <span data-ru="Сольное хореографическое выступление" data-kz="Жеке хореографиялық өнер көрсету" data-en="Solo stage choreography performance">Сольное хореографическое выступление</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_61">
+        <img src="assets/gallery/gal_p_61.jpg" alt="Вокальный ансамбль за кулисами сцены" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Вокальный ансамбль за кулисами сцены" data-kz="Сахна артындағы вокалдық ансамбль" data-en="Vocal Ensemble Backstage Before Show">Вокальный ансамбль за кулисами сцены</h4>
+            <span data-ru="Перед выходом на праздничный концерт" data-kz="Мерекелік концертке шығар алдында" data-en="Getting ready for gala performance">Перед выходом на праздничный концерт</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_62">
+        <img src="assets/gallery/gal_p_62.jpg" alt="Международный вокальный конкурс «Soundtrack Show»" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Международный вокальный конкурс «Soundtrack Show»" data-kz="«Soundtrack Show» халықаралық вокал байқауы" data-en="&quot;Soundtrack Show&quot; International Vocal Contest">Международный вокальный конкурс «Soundtrack Show»</h4>
+            <span data-ru="Лауреаты вокального конкурса на сцене" data-kz="Сахнадағы вокал байқауының лауреаттары" data-en="Vocal competition laureates on stage">Лауреаты вокального конкурса на сцене</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="music" data-id="gal_p_63">
+        <img src="assets/gallery/gal_p_63.jpg" alt="У мольберта в алом казахском национальном платье" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="У мольберта в алом казахском национальном платье" data-kz="Асыл қызыл қазақ көйлегінде мольберт жанында" data-en="At the Easel in Royal Crimson Kazakh Gown">У мольберта в алом казахском национальном платье</h4>
+            <span data-ru="Традиционный орнамент, живопись и искусство" data-kz="Ұлттық ою-өрнек, бейнелеу өнері мен шеберлік" data-en="Traditional Kazakh royal red embroidered attire">Традиционный орнамент, живопись и искусство</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_64">
+        <img src="assets/gallery/gal_p_64.jpg" alt="Премьера фильма: с актрисой и букетом роз" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Премьера фильма: с актрисой и букетом роз" data-kz="Фильм тұсаукесері: актрисамен және гүлмен" data-en="Film Premiere: With Lead Actress &amp; Roses">Премьера фильма: с актрисой и букетом роз</h4>
+            <span data-ru="В кинозале на премьерном показе" data-kz="Тұсаукесер көрсетіліміндегі кинозалда" data-en="In cinema theater at premiere screening">В кинозале на премьерном показе</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_65">
+        <img src="assets/gallery/gal_p_65.jpg" alt="Красная дорожка фильма «Жырлайтын ауыл»" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Красная дорожка фильма «Жырлайтын ауыл»" data-kz="«Жырлайтын ауыл» фильмінің қызыл кілемінде" data-en="Red Carpet of &quot;Zhyrlaityn Auyl&quot; Premiere">Красная дорожка фильма «Жырлайтын ауыл»</h4>
+            <span data-ru="Официальная премьера полнометражного фильма" data-kz="Толықметражды фильмнің ресми тұсаукесері" data-en="Full feature film official red carpet premiere">Официальная премьера полнометражного фильма</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_66">
+        <img src="assets/gallery/gal_p_66.jpg" alt="С продюсером фильма на премьере" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="С продюсером фильма на премьере" data-kz="Премьерада фильм продюсерімен бірге" data-en="With Film Producer at Cinema Premiere">С продюсером фильма на премьере</h4>
+            <span data-ru="Праздничный вечер казахстанского кино" data-kz="Қазақстандық киноның мерекелік кеші" data-en="Kazakh cinema premiere evening">Праздничный вечер казахстанского кино</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_67">
+        <img src="assets/gallery/gal_p_67.jpg" alt="Пресс-волл премьеры: фотосессия с актёрами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Пресс-волл премьеры: фотосессия с актёрами" data-kz="Тұсаукесер пресс-воллы: актерлермен фотосессия" data-en="Premiere Press Wall with Screen Stars">Пресс-волл премьеры: фотосессия с актёрами</h4>
+            <span data-ru="Звёздный состав на премьере фильма" data-kz="Фильм тұсаукесеріндегі жұлдызды құрам" data-en="Star cast at cinema premiere gala">Звёздный состав на премьере фильма</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_68">
+        <img src="assets/gallery/gal_p_68.jpg" alt="Премьерный показ: с режиссёром и продюсером" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Премьерный показ: с режиссёром и продюсером" data-kz="Тұсаукесер көрсетілімі: режиссер және продюсермен" data-en="Premiere Gala: With Director &amp; Producer">Премьерный показ: с режиссёром и продюсером</h4>
+            <span data-ru="Торжественный вечер в кинотеатре Kinopark" data-kz="Kinopark кинотеатрындағы салтанатты кеш" data-en="Celebration evening at Kinopark theater">Торжественный вечер в кинотеатре Kinopark</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_69">
+        <img src="assets/gallery/gal_p_69.jpg" alt="Торжественный выход на красную дорожку" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Торжественный выход на красную дорожку" data-kz="Қызыл кілемге салтанатты шығу" data-en="Grand Red Carpet Walk with Filmmakers">Торжественный выход на красную дорожку</h4>
+            <span data-ru="Съёмочная группа на премьере картины" data-kz="Картинаның тұсаукесеріндегі түсірілім тобы" data-en="Cast and crew on festival red carpet">Съёмочная группа на премьере картины</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_70">
+        <img src="assets/gallery/gal_p_70.jpg" alt="Официальный пресс-волл со съёмочной группой" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Официальный пресс-волл со съёмочной группой" data-kz="Түсірілім тобымен ресми пресс-волл" data-en="Official Premiere Press Wall with Crew">Официальный пресс-волл со съёмочной группой</h4>
+            <span data-ru="Презентация нового полнометражного фильма" data-kz="Жаңа толықметражды фильмнің таныстырылымы" data-en="New Kazakh feature film press conference">Презентация нового полнометражного фильма</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_71">
+        <img src="assets/gallery/gal_p_71.jpg" alt="На премьере фильма с генеральным продюсером" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="На премьере фильма с генеральным продюсером" data-kz="Фильм тұсаукесерінде бас продюсермен бірге" data-en="At Premiere with Executive Producer">На премьере фильма с генеральным продюсером</h4>
+            <span data-ru="Признание роли Айару в кинопроекте" data-kz="Айарудың киножобадағы рөлінің бағалануы" data-en="Executive producer congratulating Aiaru">Признание роли Айару в кинопроекте</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="redcarpet" data-id="gal_p_72">
+        <img src="assets/gallery/gal_p_72.jpg" alt="Пресс-конференция с режиссёром картины" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Пресс-конференция с режиссёром картины" data-kz="Картина режиссерімен пресс-конференция" data-en="Press Conference with Film Director">Пресс-конференция с режиссёром картины</h4>
+            <span data-ru="Интервью и встреча с журналистами" data-kz="Журналистермен кездесу және сұхбат" data-en="Press interview &amp; premiere photo call">Интервью и встреча с журналистами</span>
+          </div>
+        </div>
+      </div>
+      <div class="gal-item reveal" data-c="cinema" data-id="gal_p_73">
+        <img src="assets/gallery/gal_p_73.jpg" alt="Творческая встреча с режиссёром и юными актёрами" loading="lazy">
+        <div class="gal-item-info">
+          <div>
+            <h4 data-ru="Творческая встреча с режиссёром и юными актёрами" data-kz="Режиссермен және жас актерлермен кездесу" data-en="Creative Meeting with Director &amp; Young Cast">Творческая встреча с режиссёром и юными актёрами</h4>
+            <span data-ru="Мастер-класс и обсуждение будущих съёмок" data-kz="Шеберлік сағаты және болашақ түсірілімді талқылау" data-en="Acting workshop &amp; discussion with director">Мастер-класс и обсуждение будущих съёмок</span>
           </div>
         </div>
       </div>
@@ -193,11 +845,11 @@
 
 <div class="lb">
   <button class="lb-close" aria-label="Закрыть">✕</button>
-  <button class="lb-nav lb-prev" aria-label="Предыдущее">❮</button>
-  <button class="lb-nav lb-next" aria-label="Следующее">❯</button>
+  <button class="lb-prev" aria-label="Предыдущее фото">‹</button>
+  <button class="lb-next" aria-label="Следующее фото">›</button>
+  <div class="lb-counter"></div>
   <div class="lb-content">
-    <div class="lb-counter"></div>
-    <img class="lb-img" alt="Фото Айару Абдолла">
+    <img class="lb-img" src="" alt="Увеличенное фото">
     <div class="lb-caption">
       <h3></h3>
       <p></p>

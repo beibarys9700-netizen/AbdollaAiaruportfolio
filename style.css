@@ -845,6 +845,15 @@ header.solid .lang-switch button.active {
   font-weight: 500;
 }
 
+.gal-desc {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  font-size: 14.5px;
+  color: var(--ink-muted);
+  margin-top: 6px;
+  max-width: 540px;
+  line-height: 1.5;
+}
+
 .gal-subnav {
   display: flex;
   flex-direction: column;
