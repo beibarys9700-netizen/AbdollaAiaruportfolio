@@ -68,6 +68,7 @@ async function handleAuth(e) {
 
   if (enteredHash === targetHash || enteredPin === '7429') {
     sessionStorage.setItem('aiaru_admin_auth', '1');
+    sessionStorage.setItem('aiaru_admin_pin', enteredPin);
     document.getElementById('auth-modal').classList.add('hide');
     showToast('Добро пожаловать в панель управления!');
   } else {
@@ -90,6 +91,10 @@ function switchTab(tabId) {
   document.querySelectorAll('.adm-section').forEach(sec => {
     sec.classList.toggle('active', sec.id === `tab-${tabId}`);
   });
+  const activeBtn = document.querySelector(`.adm-tab[data-tab="${tabId}"]`);
+  if (activeBtn) {
+    activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -606,10 +611,55 @@ function collectFormData() {
   DATA.info.bio_p3_ru = document.getElementById('prof-bio-p3-ru').value;
 }
 
-function saveAllChanges() {
+async function publishToLiveSite() {
   collectFormData();
   localStorage.setItem('aiaru_portfolio_custom_data', JSON.stringify(DATA));
-  showToast('✅ Все изменения успешно сохранены и применены на сайте!');
+
+  const btn = document.getElementById('btn-publish-site');
+  const origHtml = btn ? btn.innerHTML : '<span class="btn-pub-icon">🚀</span> <span class="btn-pub-text">Опубликовать на сайт</span>';
+
+  if (btn) {
+    btn.disabled = true;
+    btn.classList.add('loading');
+    btn.innerHTML = '<span class="btn-pub-icon">⏳</span> <span class="btn-pub-text">Публикуем на сайт...</span>';
+  }
+
+  try {
+    const pin = sessionStorage.getItem('aiaru_admin_pin') || '7429';
+    const res = await fetch('/api/publish', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pin, data: DATA })
+    });
+
+    const result = await res.json().catch(() => ({}));
+
+    if (res.ok && result.success) {
+      if (btn) {
+        btn.innerHTML = '<span class="btn-pub-icon">✅</span> <span class="btn-pub-text">Опубликовано!</span>';
+        setTimeout(() => {
+          btn.innerHTML = origHtml;
+          btn.disabled = false;
+          btn.classList.remove('loading');
+        }, 3500);
+      }
+      showToast('🎉 Изменения успешно опубликованы на сайт! Они уже видны всем посетителям.', 5000);
+    } else {
+      throw new Error(result.error || 'Ошибка при сохранении на сервере');
+    }
+  } catch (err) {
+    console.error('Publish error:', err);
+    if (btn) {
+      btn.innerHTML = origHtml;
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+    showToast('⚠️ Сохранено локально на вашем телефоне!');
+  }
+}
+
+function saveAllChanges() {
+  publishToLiveSite();
 }
 
 function exportDataJson() {

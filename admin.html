@@ -33,15 +33,12 @@
       <a href="index.html" class="adm-back-link" title="Вернуться на сайт">← На сайт</a>
       <div class="adm-title">
         <h1>Панель управления</h1>
-        <span>Айару Абдолла · Актерское портфолио</span>
+        <span>Айару Абдолла · Управление сайтом</span>
       </div>
     </div>
     <div class="adm-header-right">
-      <button type="button" class="adm-btn adm-btn-save" onclick="saveAllChanges()">
-        <span class="icon">💾</span> Сохранить изменения
-      </button>
-      <button type="button" class="adm-btn adm-btn-secondary" onclick="exportDataJson()">
-        <span class="icon">📥</span> Скачать data.json
+      <button type="button" id="btn-publish-site" class="adm-btn adm-btn-publish" onclick="publishToLiveSite()">
+        <span class="btn-pub-icon">🚀</span> <span class="btn-pub-text">Опубликовать на сайт</span>
       </button>
       <button type="button" class="adm-btn adm-btn-ghost" onclick="logoutAdmin()" title="Выйти">
         Выйти
@@ -53,19 +50,19 @@
   <nav class="adm-nav">
     <div class="adm-nav-inner">
       <button type="button" class="adm-tab active" data-tab="hero" onclick="switchTab('hero')">
-        <span class="tab-icon">🖼️</span> Заставки и обложки
+        <span class="tab-icon">🖼️</span> Обложки
       </button>
       <button type="button" class="adm-tab" data-tab="gallery" onclick="switchTab('gallery')">
-        <span class="tab-icon">📸</span> Галерея фото (<span id="tab-gal-count">90</span>)
+        <span class="tab-icon">📸</span> Галерея (<span id="tab-gal-count">90</span>)
       </button>
       <button type="button" class="adm-tab" data-tab="profile" onclick="switchTab('profile')">
-        <span class="tab-icon">👤</span> Анкета и биография
+        <span class="tab-icon">👤</span> Анкета
       </button>
       <button type="button" class="adm-tab" data-tab="videos" onclick="switchTab('videos')">
-        <span class="tab-icon">🎬</span> Видео и проекты (<span id="tab-vid-count">20</span>)
+        <span class="tab-icon">🎬</span> Видео (<span id="tab-vid-count">20</span>)
       </button>
       <button type="button" class="adm-tab" data-tab="settings" onclick="switchTab('settings')">
-        <span class="tab-icon">⚙️</span> Синхронизация и PIN
+        <span class="tab-icon">⚙️</span> Настройки и PIN
       </button>
     </div>
   </nav>
@@ -389,21 +386,21 @@
 
       <div class="adm-grid-2">
         <div class="adm-card">
-          <h3>💾 Сохранение и экспорт</h3>
-          <p style="margin:10px 0 16px;color:#556;">Все изменения мгновенно сохраняются в вашем браузере. Чтобы изменения появились на Vercel для всех пользователей, скачайте обновленный data.json.</p>
+          <h3>⚡ Публикация и резервные копии</h3>
+          <p style="margin:10px 0 16px;color:#556;">Нажмите кнопку ниже, чтобы все изменения сразу появились на сайте в интернете для всех посетителей.</p>
           <div style="display:flex;flex-direction:column;gap:12px;">
-            <button type="button" class="adm-btn adm-btn-save full" onclick="saveAllChanges()">
-              💾 Применить изменения на сайте прямо сейчас
+            <button type="button" class="adm-btn adm-btn-publish full" onclick="publishToLiveSite()">
+              🚀 Опубликовать на сайт прямо сейчас
             </button>
             <button type="button" class="adm-btn adm-btn-secondary full" onclick="exportDataJson()">
-              📥 Скачать обновленный data.json
+              📥 Скачать резервную копию (data.json)
             </button>
             <label class="adm-btn adm-btn-ghost full" style="text-align:center;cursor:pointer;">
-              📤 Загрузить data.json с компьютера
+              📤 Восстановить из копии (data.json)
               <input type="file" accept=".json" onchange="importDataJson(this)" style="display:none;">
             </label>
             <button type="button" class="adm-btn adm-btn-danger full" onclick="resetToDefaults()">
-              🔄 Сбросить к заводским настройкам
+              🔄 Сбросить к исходным настройкам
             </button>
           </div>
         </div>
@@ -419,19 +416,19 @@
             <label>Новый пароль / PIN-код:</label>
             <input type="password" id="new-pin-input" maxlength="16" placeholder="Введите новый секретный пароль">
           </div>
-          <button type="button" class="adm-btn adm-btn-primary" style="margin-top:12px;" onclick="changePinCode()">
+          <button type="button" class="adm-btn adm-btn-primary full" style="margin-top:12px;" onclick="changePinCode()">
             Сохранить новый пароль
           </button>
         </div>
       </div>
 
-      <div class="adm-card" style="margin-top:24px;">
-        <h3>🚀 Как опубликовать обновления на Vercel</h3>
-        <ol style="margin-left:20px;margin-top:12px;line-height:1.8;color:#444;">
-          <li>Нажмите кнопку <b>«Скачать data.json»</b> выше.</li>
-          <li>Поместите скачанный файл в папку <code>assets/data.json</code> проекта.</li>
-          <li>Запустите в терминале <code>python build.py</code> и <code>git push</code>. Проект автоматически обновится на Vercel!</li>
-        </ol>
+      <div class="adm-card" style="margin-top:24px;background:#f0f9f4;border-color:#bce5cf;">
+        <h3 style="color:#1d6642;display:flex;align-items:center;gap:8px;">
+          <span>⚡</span> Как это работает (для вас и родителей)
+        </h3>
+        <p style="margin:10px 0 0;line-height:1.6;color:#2a503b;font-size:14px;">
+          Вам и родителям больше не нужно ничего скачивать или настраивать! Когда вы меняете фотографии, текст или ролики Айару прямо с телефона, просто нажмите зеленую кнопку <b>«🚀 Опубликовать на сайт»</b>. Сайт автоматически обновится сам, и новые данные сразу увидят кастинг-директоры, режиссеры и все посетители.
+        </p>
       </div>
     </section>
 

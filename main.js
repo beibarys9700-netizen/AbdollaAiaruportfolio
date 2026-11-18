@@ -328,56 +328,75 @@ if (lb) {
   window.showGalleryImage = showImage;
 }
 
-// ================= LIVE CMS OVERRIDE (FROM LOCALSTORAGE) =================
-(function initLiveCMS() {
-  const customDataStr = localStorage.getItem('aiaru_portfolio_custom_data');
-  if (!customDataStr) return;
-  try {
-    const data = JSON.parse(customDataStr);
-    
-    // Hero Cover & Focus
-    if (data.hero) {
-      const heroEl = document.getElementById('home-hero');
-      if (heroEl) {
-        if (data.hero.image) heroEl.style.backgroundImage = `url("${data.hero.image}")`;
-        if (data.hero.focus) heroEl.style.backgroundPosition = data.hero.focus;
-      }
-    }
+// ================= LIVE CMS AUTO-SYNC =================
+function applyCMSData(data) {
+  if (!data) return;
 
-    // Home Rows
-    if (data.home_rows) {
-      const r1 = document.querySelector('#home-row1-img img');
-      if (r1 && data.home_rows.row1_image) r1.src = data.home_rows.row1_image;
-      const r2 = document.querySelector('#home-row2-img img');
-      if (r2 && data.home_rows.row2_image) r2.src = data.home_rows.row2_image;
+  // Hero Cover & Focus
+  if (data.hero) {
+    const heroEl = document.getElementById('home-hero');
+    if (heroEl) {
+      if (data.hero.image) heroEl.style.backgroundImage = `url("${data.hero.image}")`;
+      if (data.hero.focus) heroEl.style.backgroundPosition = data.hero.focus;
     }
+  }
 
-    // Dynamic Gallery update (if items were modified in Admin)
-    if (data.gallery && page === 'gallery') {
-      const grid = document.getElementById('gallery-grid');
-      if (grid && data.gallery.length) {
-        grid.innerHTML = data.gallery.map(it => `
-          <div class="gal-item${it.is_wide ? ' wide' : ''} reveal in" data-c="${it.cat}" data-id="${it.id}">
-            <img src="${it.src}" alt="${it.title_ru || ''}" loading="lazy">
-            <div class="gal-item-info">
-              <div>
-                <h4>${it.title_ru || ''}</h4>
-                <span>${it.desc_ru || ''}</span>
-              </div>
+  // Home Rows
+  if (data.home_rows) {
+    const r1 = document.querySelector('#home-row1-img img');
+    if (r1 && data.home_rows.row1_image) r1.src = data.home_rows.row1_image;
+    const r2 = document.querySelector('#home-row2-img img');
+    if (r2 && data.home_rows.row2_image) r2.src = data.home_rows.row2_image;
+  }
+
+  // Dynamic Gallery update (if items were modified in Admin)
+  if (data.gallery && page === 'gallery') {
+    const grid = document.getElementById('gallery-grid');
+    if (grid && data.gallery.length) {
+      grid.innerHTML = data.gallery.map(it => `
+        <div class="gal-item${it.is_wide ? ' wide' : ''} reveal in" data-c="${it.cat}" data-id="${it.id}">
+          <img src="${it.src}" alt="${it.title_ru || ''}" loading="lazy">
+          <div class="gal-item-info">
+            <div>
+              <h4>${it.title_ru || ''}</h4>
+              <span>${it.desc_ru || ''}</span>
             </div>
           </div>
-        `).join('');
+        </div>
+      `).join('');
 
-        grid.querySelectorAll('.gal-item').forEach(item => {
-          item.addEventListener('click', () => {
-            const visible = Array.from(document.querySelectorAll('.gal-item:not(.hide)'));
-            const idx = visible.indexOf(item);
-            if (idx !== -1 && window.showGalleryImage) window.showGalleryImage(idx);
-          });
+      grid.querySelectorAll('.gal-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const visible = Array.from(document.querySelectorAll('.gal-item:not(.hide)'));
+          const idx = visible.indexOf(item);
+          if (idx !== -1 && window.showGalleryImage) window.showGalleryImage(idx);
         });
+      });
+    }
+  }
+}
+
+(async function initLiveCMS() {
+  // 1. Try local storage first (instant preview on editing device)
+  let localData = null;
+  const customDataStr = localStorage.getItem('aiaru_portfolio_custom_data');
+  if (customDataStr) {
+    try {
+      localData = JSON.parse(customDataStr);
+      applyCMSData(localData);
+    } catch (e) {}
+  }
+
+  // 2. Fetch latest live cloud data for all visitors
+  try {
+    const res = await fetch('/api/data', { cache: 'no-store' });
+    if (res.ok) {
+      const cloudData = await res.json();
+      if (cloudData && (cloudData.hero || cloudData.gallery)) {
+        applyCMSData(cloudData);
       }
     }
   } catch (err) {
-    console.error('Error applying live CMS data:', err);
+    // offline or static fallback
   }
 })();
