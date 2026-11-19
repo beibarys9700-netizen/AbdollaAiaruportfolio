@@ -6,6 +6,6 @@
     "node": "22.x"
   },
   "scripts": {
-    "build": "node -e \"const { execSync } = require('child_process'); try { execSync('python3 build.py', {stdio: 'inherit'}); } catch(e) { execSync('python build.py', {stdio: 'inherit'}); }\""
+    "build": "echo Static build ready"
   }
 }
