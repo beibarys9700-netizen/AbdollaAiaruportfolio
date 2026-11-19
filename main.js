@@ -214,24 +214,49 @@ if (vModal) {
       const src = card.dataset.video;
       const tEl = card.querySelector('.card-title');
       const sEl = card.querySelector('.card-tag');
-      vVideo.src = src;
-      vTitle.textContent = tEl ? tEl.textContent : '';
-      vSub.textContent = sEl ? sEl.textContent : '';
+
+      // Pause any background preview video playing
+      document.querySelectorAll('.media-frame video').forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+      });
+
+      if (vVideo) {
+        vVideo.src = src;
+        vVideo.muted = false;
+        vVideo.defaultMuted = false;
+        vVideo.volume = 1.0;
+      }
+      if (vTitle) vTitle.textContent = tEl ? tEl.textContent : '';
+      if (vSub) vSub.textContent = sEl ? sEl.textContent : '';
+
       vModal.classList.add('open');
-      vVideo.play().catch(() => {});
+      document.body.style.overflow = 'hidden';
+
+      if (vVideo) {
+        const playPromise = vVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(err => {
+            console.log('Video play info:', err);
+          });
+        }
+      }
     });
   });
 
   const closeVideo = () => {
     vModal.classList.remove('open');
-    vVideo.pause();
-    vVideo.currentTime = 0;
-    vVideo.src = '';
+    document.body.style.overflow = '';
+    if (vVideo) {
+      vVideo.pause();
+      vVideo.currentTime = 0;
+      vVideo.src = '';
+    }
   };
 
   if (vClose) vClose.onclick = closeVideo;
   vModal.onclick = (e) => {
-    if (e.target === vModal) closeVideo();
+    if (e.target === vModal || e.target.classList.contains('v-close')) closeVideo();
   };
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && vModal.classList.contains('open')) closeVideo();

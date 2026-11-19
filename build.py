@@ -388,6 +388,10 @@ media_body = f'''
   <button class="v-close" aria-label="Закрыть">✕</button>
   <div class="v-box">
     <video controls playsinline></video>
+    <div class="v-meta">
+      <h3 class="v-title"></h3>
+      <p class="v-sub"></p>
+    </div>
   </div>
 </div>
 '''
