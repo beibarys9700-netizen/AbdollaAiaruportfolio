@@ -24,7 +24,7 @@ window.PORTFOLIO_DATA = {
     "instruments_ru": "Домбыра · Фортепиано · Гитара · Укулеле",
     "instruments_kz": "Домбыра · Фортепиано · Гитара · Укулеле",
     "instruments_en": "Dombra · Piano · Guitar · Ukulele",
-    "hobbies_ru": "Пение (эстрадный и народный вокал) · Домбыра · Фортепиано · Гитара · Укулеле · Рисование · Рукоделие (поделки из бумаги, оригами) · Изучение иностранных языков",
+    "hobbies_ru": "Пение (эстрадный и народный вокал) · Домбыра · Фортепиано · Укулеле • учусь играть на гитаре· Рисование · Рукоделие (поделки из бумаги, оригами) · Изучение иностранных языков",
     "hobbies_kz": "Ән айту (эстрадалық және халықтық вокал) · Домбыра · Фортепиано · Гитара · Укулеле · Сурет салу · Қолөнер (қағаздан бұйымдар, оригами) · Шет тілдерін үйрену",
     "hobbies_en": "Singing (Pop & Traditional Vocals) · Dombra · Piano · Guitar · Ukulele · Drawing · Paper Crafts & Origami · Foreign Languages",
     "courses_ru": "Актёрское мастерство · Вокал · Домбыра · Фортепиано · Английский язык · Математика",
@@ -53,18 +53,10 @@ window.PORTFOLIO_DATA = {
   "home_rows": {
     "row1_image": "assets/home_mian3.jpg",
     "row1_title_ru": "Талант, пластика и живые эмоции",
-    "row1_title_kz": "Дарын, пластика және шынайы эмоция",
-    "row1_title_en": "Versatility, Music & Authentic Emotion",
     "row1_desc_ru": "Айару — обладательница многочисленных дипломов, медалей и Гран-при по вокалу. Поёт, играет на домбыре, фортепиано, гитаре и укулеле. Свободно работает в кадре на казахском и русском языках, изучает английский язык.",
-    "row1_desc_kz": "Айару — вокал бойынша көптеген дипломдар, медальдар мен Гран-при иегері. Ән айтады, домбыра, фортепиано, гитара және укулеледе ойнайды. Кадрда қазақ және орыс тілдерінде еркін жұмыс істейді, ағылшын тілін меңгеруде.",
-    "row1_desc_en": "Aiaru is a Grand Prix-winning vocalist and young screen actor based in Almaty. She sings and plays four instruments — dombra, piano, guitar, and ukulele — performing fluently in Kazakh and Russian while studying English.",
     "row2_image": "assets/home_main.jpg",
     "row2_title_ru": "От драматического кино до рекламы",
-    "row2_title_kz": "Драмалық кинодан жарнамаға дейін",
-    "row2_title_en": "From Dramatic Television to Commercials",
-    "row2_desc_ru": "Драматическая роль дочери убитой в ретро-сериале «Было дело» (70-е годы, серия «Холодное блюдо»), главные детские роли в рекламе «Хрум», «Central Dent Clinic», «Білімді бол», «Tito Arcanum», анонсе фильма «Карина» и 25+ проектах.",
-    "row2_desc_kz": "«Было дело» (70-ші жылдар, «Холодное блюдо» бөлімі) ретро-хикаясындағы драмалық рөл, «Хрум», «Central Dent Clinic», «Білімді бол», «Tito Arcanum» жарнамаларындағы басты балалар рөлдері және 25-тен астам киножоба.",
-    "row2_desc_en": "Featured in the 1970s detective period series “Bylo Delo” (“Cold Dish” — role of the victim's daughter), alongside lead commercial campaigns for HROOM Chips, Central Dent Clinic, Bilimdi Bol, Tito Arcanum, and 25+ film & TV productions."
+    "row2_desc_ru": "Драматическая роль дочери убитой в ретро-сериале «Было дело» (70-е годы, серия «Холодное блюдо»), главные детские роли в рекламе «Хрум», «Central Dent Clinic», «Білімді бол», «Tito Arcanum», анонсе фильма «Карина» и 25+ проектах."
   },
   "videos": [
     {
@@ -90,18 +82,6 @@ window.PORTFOLIO_DATA = {
       "title_en": "“Bylo Delo” · “Cold Dish” | Emotional Dramatic Scene (Scene 2)",
       "video_src": "assets/videos/kholodnoe_2.mp4",
       "poster_src": "assets/posters/kholodnoe_2.jpg"
-    },
-    {
-      "id": "backstage_direct",
-      "cat": "roles",
-      "tag_ru": "Кино и сериалы",
-      "tag_kz": "Кино және хикая",
-      "tag_en": "Theatrical / TV",
-      "title_ru": "Молодёжный сериал | Игровая сцена на натуре",
-      "title_kz": "Жастар хикаясы | Ашық алаңдағы ойын сахнасы",
-      "title_en": "Youth Series | Outdoor Ensemble Scene",
-      "video_src": "assets/videos/backstage_direct.mp4",
-      "poster_src": "assets/posters/backstage_direct.jpg"
     },
     {
       "id": "ad_hroom",
